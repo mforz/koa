@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>TS</title>
+        <style>
+            .con{
+                width:100%;
+            }
+            textarea{
+                display:inline;
+                resize:none;
+                outline: none;
+            }
+            .con .btn{
+                border:1px solid #ccc;
+                border-radius:5px;
+                cursor: pointer;
+                font-size: 13px;
+                color:#000010;
+            }
+            .distxt-tbarea{
+                background: #eee;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="con">
+            <textarea class="txt-tbarea" autofocus rows="7" cols="20" type="text" placeholder="请输入口令" ></textarea>
+            <a class="btn" onclick="trans()">换>>></a>
+            <textarea class="distxt-tbarea" readonly rows="7" cols="20" type="text" placeholder="这里显示转换后的内容" ></textarea>
+            <a class="btn" onclick="trans2()">换>>></a>
+            <textarea class="restxt-tbarea" readonly rows="7" cols="20" type="text" placeholder="这里显示转换后的内容" ></textarea>
+        </div>
+
+         <script>
+             let trans = () => {
+
+               let v =  document.getElementsByClassName('txt-tbarea')[0].value
+               
+               let q = {
+                    method: "POST",
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    body: `tkl=${v}`,
+                }
+
+               fetch('http://api.chaozhi.hk/tb/tklParse',q)
+               .then(response => response.json())
+               .then(data=>{
+                  document.getElementsByClassName('distxt-tbarea')[0].innerText = data.data.url
+               }).catch(err=>{
+                   console.error(err)
+               })
+             }
+
+             let trans2 =()=>{
+
+                let v = document.getElementsByClassName('distxt-tbarea')[0].value
+
+                console.log(v)
+
+             }
+         </script>
+    </body>
+</html>

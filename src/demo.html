@@ -1,0 +1,21 @@
+<html>
+  <body>
+    
+    <p>this. is test content</p>
+
+    <h1> 这是一个用koa写的html</h1>
+
+    <button onclick="go()"></button>
+
+    <script>
+      var go=function(){
+        var xhr=new XMLHttpRequest()
+        xhr.onreadystatechange=function(e){
+          console.log('yes',e)
+        }
+        xhr.open('GET','http://localhost:3000/app/api/v4/tabs/selected',true)
+        xhr.send(null)
+      }
+    </script>
+  </body>
+</html>

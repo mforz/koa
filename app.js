@@ -10,7 +10,7 @@ const app = new Koa();
 
 const main = ctx => {
   ctx.response.type = 'html';
-  ctx.response.body = fs.createReadStream('./src/pages/demo.html');
+  ctx.response.body = fs.createReadStream('./src/pages/tb.html');
 };
 
 // const main = ctx => {
